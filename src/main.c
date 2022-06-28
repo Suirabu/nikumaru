@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "args.h"
 #include "log.h"
@@ -28,6 +29,18 @@ int main(int argc, char** argv) {
     }
 
     if(result == -1) {
+        const char file_path_len = strlen(options.file_path);
+        if(file_path_len >= 4) {
+            const char* extension = options.file_path + file_path_len - 4;
+
+            if(strcmp(extension, ".rec") == 0 && options.csplus) {
+                LOG_INFO("To parse freeware Cave Story '.rec' files you must not set the 'csplus' flag. Try omitting the -p or --csplus flags.\n");
+            }
+            else if(strcmp(extension, ".dat") == 0 && !options.csplus) {
+                LOG_INFO("To parse Cave Story+ '.dat' files you must set the 'csplus' flag with either -p or --csplus.\n");
+            }
+        }
+
         return EXIT_FAILURE;
     }
 
