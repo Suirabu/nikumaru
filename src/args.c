@@ -13,7 +13,8 @@ void print_help(const char* exec_path) {
         "    %s [options] <file path>\n\n"
         "Options:\n"
         "    -h, --help      Display help information\n"
-        "    -v, --verbose   Display additional information while running\n",
+        "    -v, --verbose   Display additional information while running\n"
+        "    -p, --csplus    Get time from Cave Story+ '.dat' files\n",
         
         exec_path
     );
@@ -37,6 +38,9 @@ Options args_parse(int argc, char** argv) {
                 else if(strcmp(arg, "--verbose") == 0) {
                     options.verbose = true;
                 }
+                else if(strcmp(arg, "--csplus") == 0) {
+                    options.csplus = true;
+                }
                 else {
                     LOG_ERROR("Unknown option '%s' provided.\n", arg);
                     exit(EXIT_FAILURE);
@@ -53,6 +57,9 @@ Options args_parse(int argc, char** argv) {
                         exit(EXIT_SUCCESS);
                     case 'v':
                         options.verbose = true;
+                        break;
+                    case 'p':
+                        options.csplus = true;
                         break;
 
                     default:

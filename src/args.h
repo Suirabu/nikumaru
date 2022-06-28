@@ -5,6 +5,7 @@
 
 typedef struct {
     bool verbose;
+    bool csplus;
     const char* file_path;
 } Options;
 
