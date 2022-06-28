@@ -12,10 +12,12 @@ int main(int argc, char** argv) {
     
     // Use default file path
     if(!options.file_path) {
+        const char* default_path = options.csplus ? "Profile.dat" : "290.rec";
+
         if(options.verbose) {
-            LOG_INFO("No file path provided. Defaulting to '290.rec' instead.\n");
+            LOG_INFO("No file path provided. Defaulting to '%s' instead.\n", default_path);
         }
-        options.file_path = "290.rec";
+        options.file_path = default_path;
     }
 
     // Decode file contents
