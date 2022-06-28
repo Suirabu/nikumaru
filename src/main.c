@@ -2,7 +2,6 @@
 #include <stdlib.h>
 
 #include "args.h"
-#include "defs.h"
 #include "log.h"
 #include "parse.h"
 
