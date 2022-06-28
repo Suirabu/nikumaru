@@ -8,13 +8,13 @@
 
 void print_help(const char* exec_path) {
     printf(
-        "Nikumaru - Cave Story '.rec' file parser\n\n"
+        "Nikumaru - Cave Story 'Hell' time extraction tool\n\n"
         "Usage:\n"
         "    %s [options] <file path>\n\n"
         "Options:\n"
         "    -h, --help      Display help information\n"
         "    -v, --verbose   Display additional information while running\n"
-        "    -p, --csplus    Get time from Cave Story+ '.dat' files\n",
+        "    -p, --csplus    Extract time from Cave Story+ '.dat' files\n",
         
         exec_path
     );

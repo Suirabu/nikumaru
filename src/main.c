@@ -4,7 +4,7 @@
 #include "args.h"
 #include "defs.h"
 #include "log.h"
-#include "rec.h"
+#include "parse.h"
 
 int main(int argc, char** argv) {
     // Parse command line arguments
