@@ -2,11 +2,9 @@
 #include <stdlib.h>
 
 #include "args.h"
+#include "defs.h"
 #include "log.h"
 #include "rec.h"
-
-#define FRAMES_PER_SECOND 50
-#define FRAMES_PER_MINUTE (50 * 60)
 
 int main(int argc, char** argv) {
     // Parse command line arguments
