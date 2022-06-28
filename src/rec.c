@@ -9,8 +9,7 @@ typedef struct {
     uint8_t random[4];
 } Rec;
 
-int rec_decode(const char* file_path)
-{
+int rec_decode(const char* file_path) {
     // Open file
     FILE* rec_file = fopen(file_path, "rb");
     if(!rec_file) {
@@ -42,4 +41,28 @@ int rec_decode(const char* file_path)
     }
 
     return rec.counter[0];
+}
+
+#define DAT_COUNTER_OFFSET 0x1F054
+
+int dat_decode(const char* file_path) {
+    // Open file
+    FILE* dat_file = fopen(file_path, "rb");
+    if(!dat_file) {
+        LOG_ERROR("Unable to open file '%s' for reading.\n", file_path);
+        return -1;
+    }
+
+    // Seek to location of best Hell time
+    fseek(dat_file, DAT_COUNTER_OFFSET, SEEK_SET);
+
+    // Read file contents into 'Rec' struct
+    uint64_t result;
+    if(fread(&result, sizeof(result), 1, dat_file) != 1) {
+        LOG_ERROR("Failed to parse file contents.\n");
+        return -1;
+    }
+    fclose(dat_file);
+
+    return result;
 }
