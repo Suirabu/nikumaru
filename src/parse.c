@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 #include "log.h"
-#include "rec.h"
+#include "parse.h"
 
 typedef struct {
     uint32_t counter[4];
@@ -56,7 +56,7 @@ int dat_decode(const char* file_path) {
     // Seek to location of best Hell time
     fseek(dat_file, DAT_COUNTER_OFFSET, SEEK_SET);
 
-    // Read file contents into 'Rec' struct
+    // Read file contents into 'result'
     uint64_t result;
     if(fread(&result, sizeof(result), 1, dat_file) != 1) {
         LOG_ERROR("Failed to parse file contents.\n");
